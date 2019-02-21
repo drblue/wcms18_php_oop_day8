@@ -17,9 +17,9 @@ use \App\Controllers\ArtistController;
 use \App\Controllers\TrackController;
 
 // Skapa alla controllers vi behöver
-$albumController = new AlbumController();
-$artistController = new ArtistController();
-$trackController = new TrackController();
+$albumController = new AlbumController($dbh);
+$artistController = new ArtistController($dbh);
+$trackController = new TrackController($dbh);
 
 // Hämta ut info om just detta albumet
 $album = $albumController->getAlbum($_REQUEST['album_id']);

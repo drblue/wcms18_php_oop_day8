@@ -14,7 +14,7 @@ use \App\Controllers\ArtistController;
  * - (Länk för att skapa en artist)
 */
 
-$artistController = new ArtistController();
+$artistController = new ArtistController($dbh);
 $artists = $artistController->getArtists();
 
 ?>

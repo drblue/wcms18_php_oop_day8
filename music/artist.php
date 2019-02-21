@@ -15,10 +15,10 @@ require("templates/header.php");
 use \App\Controllers\ArtistController;
 use \App\Controllers\AlbumController;
 
-$artistController = new ArtistController();
+$artistController = new ArtistController($dbh);
 $artist = $artistController->getArtist($_REQUEST['artist_id']);
 
-$albumController = new AlbumController();
+$albumController = new AlbumController($dbh);
 $albums = $albumController->getAlbumsForArtist($_REQUEST['artist_id']);
 
 ?>
