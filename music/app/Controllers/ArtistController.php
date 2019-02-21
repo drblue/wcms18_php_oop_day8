@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \PDO;
+use App\Models\Artist;
 
 class ArtistController {
 	protected $dbh;
@@ -28,13 +29,13 @@ class ArtistController {
 		$query->bindParam(':id', $id);
 		$query->execute();
 
-		return $query->fetchObject('Artist');
+		return $query->fetchObject(Artist::class);
 	}
 
 	public function getArtists() {
 		$query = $this->dbh->prepare("SELECT * FROM artists");
 		$query->execute();
 
-		return $query->fetchAll(PDO::FETCH_CLASS, 'Artist');
+		return $query->fetchAll(PDO::FETCH_CLASS, Artist::class);
 	}
 }

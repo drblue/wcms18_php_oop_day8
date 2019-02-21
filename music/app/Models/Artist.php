@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Artist {
 	protected $id;
 	protected $name;

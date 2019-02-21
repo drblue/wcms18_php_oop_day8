@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \PDO;
+use App\Models\Track;
 
 class TrackController {
 	protected $dbh;
@@ -28,14 +29,14 @@ class TrackController {
 		$query->bindParam(':id', $id);
 		$query->execute();
 
-		return $query->fetchObject('Track');
+		return $query->fetchObject(Track::class);
 	}
 
 	public function getTracks() {
 		$query = $this->dbh->prepare("SELECT * FROM tracks");
 		$query->execute();
 
-		return $query->fetchAll(PDO::FETCH_CLASS, 'Track');
+		return $query->fetchAll(PDO::FETCH_CLASS, Track::class);
 	}
 
 	public function getTracksForAlbum($album_id) {
@@ -43,6 +44,6 @@ class TrackController {
 		$query->bindParam(':album_id', $album_id);
 		$query->execute();
 
-		return $query->fetchAll(PDO::FETCH_CLASS, 'Track');
+		return $query->fetchAll(PDO::FETCH_CLASS, Track::class);
 	}
 }

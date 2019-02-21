@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Track {
 	protected $id;
 	protected $album_id;

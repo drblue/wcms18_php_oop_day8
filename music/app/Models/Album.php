@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Album {
 	protected $id;
 	protected $artist_id;
