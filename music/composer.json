@@ -1,0 +1,17 @@
+{
+    "name": "jn/music",
+    "authors": [
+        {
+            "name": "Johan Nordström",
+            "email": "johan@digitalvillage.se"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^2.12"
+	},
+	"autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "app/Controllers"
+        }
+    }
+}
