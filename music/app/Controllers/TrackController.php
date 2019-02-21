@@ -5,7 +5,7 @@ namespace App\Controllers;
 use \PDO;
 use App\Models\Track;
 
-class TrackController {
+class TrackController extends BaseController {
 	protected $dbh;
 
 	public function __construct() {
@@ -25,18 +25,11 @@ class TrackController {
 	*/
 
 	public function getTrack($id) {
-		$query = $this->dbh->prepare("SELECT * FROM tracks WHERE id = :id");
-		$query->bindParam(':id', $id);
-		$query->execute();
-
-		return $query->fetchObject(Track::class);
+		return $this->queryId('tracks', Track::class, $id);
 	}
 
 	public function getTracks() {
-		$query = $this->dbh->prepare("SELECT * FROM tracks");
-		$query->execute();
-
-		return $query->fetchAll(PDO::FETCH_CLASS, Track::class);
+		return $this->queryAll('tracks', Track::class);
 	}
 
 	public function getTracksForAlbum($album_id) {

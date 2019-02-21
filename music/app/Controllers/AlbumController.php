@@ -5,7 +5,7 @@ namespace App\Controllers;
 use \PDO;
 use App\Models\Album;
 
-class AlbumController {
+class AlbumController extends BaseController {
 	protected $dbh;
 
 	public function __construct() {
@@ -25,18 +25,11 @@ class AlbumController {
 	*/
 
 	public function getAlbum($id) {
-		$query = $this->dbh->prepare("SELECT * FROM albums WHERE id = :id");
-		$query->bindParam(':id', $id);
-		$query->execute();
-
-		return $query->fetchObject(Album::class);
+		return $this->queryId('albums', Album::class, $id);
 	}
 
 	public function getAlbums() {
-		$query = $this->dbh->prepare("SELECT * FROM albums");
-		$query->execute();
-
-		return $query->fetchAll(PDO::FETCH_CLASS, Album::class);
+		return $this->queryAll('albums', Album::class);
 	}
 
 	public function getAlbumsForArtist($artist_id) {

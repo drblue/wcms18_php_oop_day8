@@ -5,7 +5,7 @@ namespace App\Controllers;
 use \PDO;
 use App\Models\Artist;
 
-class ArtistController {
+class ArtistController extends BaseController {
 	protected $dbh;
 
 	public function __construct() {
@@ -25,17 +25,23 @@ class ArtistController {
 	*/
 
 	public function getArtist($id) {
+		return $this->queryId('artists', Artist::class, $id);
+		/*
 		$query = $this->dbh->prepare("SELECT * FROM artists WHERE id = :id");
 		$query->bindParam(':id', $id);
 		$query->execute();
 
 		return $query->fetchObject(Artist::class);
+		*/
 	}
 
 	public function getArtists() {
+		return $this->queryAll('artists', Artist::class);
+		/*
 		$query = $this->dbh->prepare("SELECT * FROM artists");
 		$query->execute();
 
 		return $query->fetchAll(PDO::FETCH_CLASS, Artist::class);
+		*/
 	}
 }
